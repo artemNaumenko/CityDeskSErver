@@ -7,6 +7,7 @@ import {
 import {deleteUserController, getUserController, signInController} from "../controllers/userController";
 import {isActiveUser} from "../middleware/isActiveUser";
 import {testController} from "../controllers/testController";
+import {isCorrectUserIdInParams} from "../middleware/isCorrectUserIdInParams";
 
 
 // Export module for registering router in express app
@@ -22,4 +23,4 @@ router.delete("/deleteProblem", deleteProblemController)
 
 router.post("/signIn", signInController)
 router.delete("/deleteUser", deleteUserController)
-router.get("/getUser/:userId", getUserController)
+router.get("/getUser/:userId", isCorrectUserIdInParams, getUserController)

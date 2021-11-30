@@ -39,8 +39,11 @@ export async function getUserController(req: Request, res: Response){
     try{
         const userId: string = req.params.userId
         const user = await getUser(userId)
-
-        return res.status(200).json(user)
+        if(user) {
+            return res.status(200).json(user)
+        } else {
+            return res.status(205).json(null)
+        }
     } catch (e) {
         return res.status(400).json({message: e})
     }

@@ -38,7 +38,8 @@
 #get "/getUser/:userId"
     request for getting user by specific id. An id sent as param 
     (for exmaple if userId is 123 then we will use next one request: "/getUser/123").
-    If good conditions server return status 200 and user object.
+    If good conditions server return status 200 and user object. If userId is invaild 
+    server return status 401.
 
 #databaseCollections
 #userStatus

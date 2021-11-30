@@ -1,6 +1,7 @@
 import  {Request, Response} from "express";
-import {findUser, registerUser} from "../services/userLogginServices";
+import {findUser, registerUser} from "../services/userSignInServices";
 import {deleteUser} from "../services/deleteUser";
+import {getUser} from "../services/getUser";
 
 
 export async function signInController(req: Request, res: Response): Promise<Response>{
@@ -31,5 +32,16 @@ export async function deleteUserController(req: Request, res: Response): Promise
         return res.status(200).json({message: "Success"})
     } catch(e){
         return res.status(400).json({Error: e})
+    }
+}
+
+export async function getUserController(req: Request, res: Response){
+    try{
+        const userId: string = req.params.userId
+        const user = await getUser(userId)
+
+        return res.status(200).json(user)
+    } catch (e) {
+        return res.status(400).json({message: e})
     }
 }

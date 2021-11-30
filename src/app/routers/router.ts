@@ -4,7 +4,7 @@ import {
     getAllSolvedProblemsController,
     getAllUnsolvedProblemsController
 } from "../controllers/problemController";
-import {deleteUserController, signInController} from "../controllers/userController";
+import {deleteUserController, getUserController, signInController} from "../controllers/userController";
 import {isActiveUser} from "../middleware/isActiveUser";
 import {testController} from "../controllers/testController";
 
@@ -22,3 +22,4 @@ router.delete("/deleteProblem", deleteProblemController)
 
 router.post("/signIn", signInController)
 router.delete("/deleteUser", deleteUserController)
+router.get("/getUser/:userId", getUserController)

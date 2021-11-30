@@ -3,7 +3,7 @@ import {findUser, registerUser} from "../services/userLogginServices";
 import {deleteUser} from "../services/deleteUser";
 
 
-export async function loginController(req: Request, res: Response): Promise<Response>{
+export async function signInController(req: Request, res: Response): Promise<Response>{
     try{
         const userId: string = req.body.id
         const userName: string = req.body.name

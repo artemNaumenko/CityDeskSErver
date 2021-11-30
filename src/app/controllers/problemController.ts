@@ -11,7 +11,7 @@ export async function addingProblemController(req: Request, res: Response): Prom
         const authorId: string = req.body.userId
         const longitude: number = req.body.longitude
         const latitude: number = req.body.latitude
-        const photoURL: string = req.body.photoBin
+        const photoURL: string = req.body.photoURL
 
         await addingProblem(title, context,authorId, photoURL, longitude, latitude)
 

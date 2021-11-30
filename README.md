@@ -25,7 +25,7 @@
     only problem status will be changed on SOLVED. If good conditions 
     server return status 200. 
 
-#post "/login"
+#post "/signIn"
     request for login/registration of user, body request contains id (google id), name, 
     photoURL, email (The register has marking!!!). If good conditions server 
     return status 200 and userId from our database.

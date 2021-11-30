@@ -9,18 +9,22 @@
     request for add new city problem into database, request body contains title, context, 
     userId (not google id, but id from our database), longitude, latitude parameters 
     photoURL (The register has marking!!!). If good condition server return status 200.
+
 #get "/getAllUnsolvedProblems"
     request for list that contains all UNSOLVED problems in database. 
     If good conditions server return status 200 .
     and json object. 
+
 #get "/getAllSolvedProblems"
     request for list that contains all SOLVED problems in database. 
     If good conditions server return status 200.
     and json object.
+
 #delete "/deleteProblem"
     request for deleting problem (actualy object does not delete from database)
     only problem status will be changed on SOLVED. If good conditions 
     server return status 200. 
+
 #post "/login"
     request for login/registration of user, body request contains id (google id), name, 
     photoURL, email (The register has marking!!!). If good conditions server 

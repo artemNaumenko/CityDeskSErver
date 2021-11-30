@@ -7,7 +7,7 @@
     
 #post "/addProblem"
     request for add new city problem into database, request body contains title, context, 
-    userId (not google id, but id from our database), longitude, latitude parameters 
+    authorId (not google id, but id from our database), longitude, latitude parameters 
     photoURL (The register has marking!!!). If good condition server return status 200.
 
 #get "/getAllUnsolvedProblems"

@@ -10,7 +10,6 @@ export async function isValidProblemData(req: Request, res: Response, next: Func
         const latitude: number = parseFloat(req.body.latitude)
         const photoURL: string = req.body.photoURL
 
-        console.log(latitude)
         if(ObjectID.isValid(authorId) && title && context && longitude && latitude && photoURL &&
                 (typeof longitude == "number") && (typeof latitude == "number")){
             return next()

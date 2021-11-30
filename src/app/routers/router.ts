@@ -13,6 +13,8 @@ import {isActiveUser} from "../middleware/isActiveUser";
 export const router: Router = Router();
 
 // Define your routes here
+router.get("/test", )
+
 router.post("/addProblem",isActiveUser, addingProblemController)
 router.get("/getAllUnsolvedProblems", getAllUnsolvedProblemsController)
 router.get("/getAllSolvedProblems", getAllSolvedProblemsController)

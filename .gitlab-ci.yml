@@ -1,0 +1,3 @@
+git remote add heroku https://heroku:958cdabd-987d-4d37-bb86-86f0f50ce450@git.heroku.com/mighty-fortress-84108.git
+
+git push -f heroku HEAD:master

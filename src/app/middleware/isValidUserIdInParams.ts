@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 const ObjectID = require("mongodb").ObjectID
 
-export async function isCorrectUserIdInParams(req: Request, res: Response, next: Function) {
+export async function isValidUserIdInParams(req: Request, res: Response, next: Function) {
     try {
         const userId = req.params.userId
         if(ObjectID.isValid(userId)){

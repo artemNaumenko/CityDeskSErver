@@ -6,6 +6,7 @@ import {
 } from "../controllers/problemController";
 import {deleteUserController, loginController} from "../controllers/userController";
 import {isActiveUser} from "../middleware/isActiveUser";
+import {testController} from "../controllers/testController";
 
 
 
@@ -13,7 +14,7 @@ import {isActiveUser} from "../middleware/isActiveUser";
 export const router: Router = Router();
 
 // Define your routes here
-router.get("/test", )
+router.get("/test", testController  )
 
 router.post("/addProblem",isActiveUser, addingProblemController)
 router.get("/getAllUnsolvedProblems", getAllUnsolvedProblemsController)

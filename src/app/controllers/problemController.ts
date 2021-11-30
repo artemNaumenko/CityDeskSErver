@@ -8,7 +8,7 @@ export async function addingProblemController(req: Request, res: Response): Prom
     try{
         const title: string = req.body.title
         const context : string = req.body.context
-        const authorId: string = req.body.userId
+        const authorId: string = req.body.authorId
         const longitude: number = req.body.longitude
         const latitude: number = req.body.latitude
         const photoURL: string = req.body.photoURL

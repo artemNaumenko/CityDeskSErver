@@ -7,6 +7,7 @@ import {
 import {deleteUserController, signInController} from "../controllers/userController";
 import {isActiveUser} from "../middleware/isActiveUser";
 import {testController} from "../controllers/testController";
+import {uploadPhotoController} from "../controllers/uploadPhotoController";
 
 
 
@@ -23,3 +24,5 @@ router.delete("/deleteProblem", deleteProblemController)
 
 router.post("/signIn", signInController)
 router.delete("/deleteUser", deleteUserController)
+
+// router.post("/uploadPhoto", uploadPhotoController)

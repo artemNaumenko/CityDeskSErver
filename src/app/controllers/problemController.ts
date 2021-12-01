@@ -6,6 +6,7 @@ import {deleteProblem} from "../services/deleteProblem";
 import {emailService} from "../services/emailReportServices";
 import {getProblemById} from "../services/getProblemById";
 import {getProblems} from "../services/getProblems";
+const axios = require('axios')
 
 export async function addingProblemController(req: Request, res: Response): Promise<Response>{
     try{
@@ -18,7 +19,11 @@ export async function addingProblemController(req: Request, res: Response): Prom
 
         const responsibleOrganizations = req.body.responsibleOrganizations
 
-        const problemId = await addingProblem(title, context,authorId, photoURL, longitude, latitude, responsibleOrganizations)
+        const URL = `https://eu1.locationiq.com/v1/reverse.php?key=${process.env.geocodingApiKey}&lat=${latitude}&lon=${longitude}&format=json`
+        const response = await axios.get(URL)
+        const address: string = `${response.data.address.road}, ${response.data.address.city}`
+
+        const problemId = await addingProblem(title, context,authorId, photoURL, longitude, latitude, address, responsibleOrganizations)
         await emailService(problemId)
 
         return res.status(200).json()
@@ -61,6 +66,7 @@ export async function getProblemByIdController(req: Request, res: Response): Pro
     try{
         const problemId: string = req.params.problemId
         const problem = await getProblemById(problemId)
+
         return res.status(200).json(problem)
     }catch (e) {
         return res.status(400).json({Error: e})

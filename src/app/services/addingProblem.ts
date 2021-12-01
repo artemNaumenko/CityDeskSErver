@@ -2,7 +2,7 @@ import problemModel from "../models/problem.model";
 import problemStatusModel from "../models/problemStatus.model";
 
 export async function addingProblem(title: string, context : string, authorId: string, photoURL: string,
-                                    longitude: number, latitude: number, responsibleOrganizations: any){
+                                    longitude: number, latitude: number, address: string, responsibleOrganizations: any){
     try{
         const status = await problemStatusModel.findOne({value: "UNSOLVED"})
 
@@ -13,6 +13,7 @@ export async function addingProblem(title: string, context : string, authorId: s
             photoURL: photoURL,
             longitude: longitude,
             latitude: latitude,
+            address: address,
             statusID: status._id,
             responsibleOrganizations: responsibleOrganizations
         })

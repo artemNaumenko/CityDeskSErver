@@ -17,9 +17,17 @@ export async function signInController(req: Request, res: Response): Promise<Res
         if(!existingUser){
             const newUser = await registerUser(userId, userName, userEmail, userPhotoURL)
             await emailWelcomeService(newUser)
-            return res.status(200).json({id: newUser._id})
+            if(newUser._id != null) {
+                return res.status(200).json({id: newUser._id})
+            } else {
+                return res.status(205).json()
+            }
         } else {
-            return res.status(200).json({id: existingUser._id})
+            if(existingUser._id != null) {
+                return res.status(200).json({id: existingUser._id})
+            } else {
+                return res.status(205).json()
+            }
         }
 
     }catch (e) {

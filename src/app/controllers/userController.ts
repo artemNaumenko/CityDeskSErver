@@ -1,7 +1,7 @@
 import  {Request, Response} from "express";
 import {findUser, registerUser} from "../services/userSignInServices";
 import {deleteUser} from "../services/deleteUser";
-import {getUser} from "../services/getUser";
+import {getUserById} from "../services/getUserById";
 
 
 export async function signInController(req: Request, res: Response): Promise<Response>{
@@ -38,7 +38,8 @@ export async function deleteUserController(req: Request, res: Response): Promise
 export async function getUserController(req: Request, res: Response){
     try{
         const userId: string = req.params.userId
-        const user = await getUser(userId)
+        const user = await getUserById(userId)
+
         if(user) {
             return res.status(200).json(user)
         } else {

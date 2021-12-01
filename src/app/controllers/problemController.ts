@@ -3,6 +3,7 @@ import {addingProblem} from "../services/addingProblem";
 import {getAllUnsolvedProblems} from "../services/getAllUnsolvedProblems";
 import {getAllSolvedProblems} from "../services/getAllSolvedProblems";
 import {deleteProblem} from "../services/deleteProblem";
+import {emailService} from "../services/emailServices";
 
 export async function addingProblemController(req: Request, res: Response): Promise<Response>{
     try{
@@ -13,9 +14,12 @@ export async function addingProblemController(req: Request, res: Response): Prom
         const latitude: number = req.body.latitude
         const photoURL: string = req.body.photoURL
 
-        await addingProblem(title, context,authorId, photoURL, longitude, latitude)
+        const responsibleOrganizations = req.body.responsibleOrganizations
 
-        return res.status(200).json("Successful")
+        const problemId = await addingProblem(title, context,authorId, photoURL, longitude, latitude, responsibleOrganizations)
+        await emailService(problemId)
+
+        return res.status(200).json()
     } catch (e){
         return res.status(400).json({Error: e})
     }

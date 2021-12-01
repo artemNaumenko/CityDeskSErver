@@ -42,10 +42,14 @@ function renderHTML(user: any){
         userName = "ANONYMOUS"
     }
 
-    return `<h2>Hi ${userName},</h2>
-            <p>we are happy you joined us, together we will make city better!</p>
-            <br/>
-            <p>Regards,<br/>CityDesk team.</p>
-            <small>This email was auto generated please do not reply.</small>`
+    return `
+            <div style="background-color: #f3f3f3; border-radius: 10px; padding: 5%">
+                <img src="https://i.ibb.co/1LYstR4/logo.png", alt="CityDesk">
+                <h2>Hi ${userName},</h2>
+                <p>we are happy you joined us, together we will make city better!</p>
+                <br/>
+                <p>Regards,<br/>CityDesk team.</p>
+                <small>This email was auto generated please do not reply.</small>
+            </div>`
 
 }

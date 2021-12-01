@@ -4,6 +4,7 @@ import {getAllUnsolvedProblems} from "../services/getAllUnsolvedProblems";
 import {getAllSolvedProblems} from "../services/getAllSolvedProblems";
 import {deleteProblem} from "../services/deleteProblem";
 import {emailService} from "../services/emailServices";
+import {getProblemById} from "../services/getProblemById";
 
 export async function addingProblemController(req: Request, res: Response): Promise<Response>{
     try{
@@ -38,6 +39,16 @@ export async function getAllSolvedProblemsController(req: Request, res: Response
     try{
         const solvedProblems = await getAllSolvedProblems()
         return res.status(200).json(solvedProblems)
+    }catch (e) {
+        return res.status(400).json({Error: e})
+    }
+}
+
+export async function getProblemByIdController(req: Request, res: Response): Promise<Response>{
+    try{
+        const problemId: string = req.params.problemId
+        const problem = await getProblemById(problemId)
+        return res.status(200).json(problem)
     }catch (e) {
         return res.status(400).json({Error: e})
     }

@@ -61,7 +61,7 @@ function renderHTML(problem: any, user: any, organizationName: string){
     }
 
     return `<div style="background-color: #f3f3f3; border-radius: 10px; padding: 5%">
-                <img src="https://i.ibb.co/1LYstR4/logo.png", alt="CityDesk">
+                <img src="https://i.ibb.co/1LYstR4/logo.png" alt="CityDesk">
                 <h2>Hi ${organizationName},</h2>
                 <p>user of CityDesk ${userName} (${user.email}), reported a new problem in the city:</p>
                 <br/>
@@ -71,11 +71,12 @@ function renderHTML(problem: any, user: any, organizationName: string){
                         <div style="overflow: hidden">
                             <h5 style="display: inline-block; margin: 0">latitude: ${problem.latitude}</h5>
                             <h5 style="display: inline-block; float: right; margin: 0;">longitude: ${problem.longitude}</h5>
+                            <h4 style="margin-top: 5px">${problem.address}</h4>
                         </div>
                     </a>
                     
                     
-                    <h5>${problem.context}</h5>
+                    <h4>${problem.context}</h4>
                     <div style="margin: auto; max-width: 50%">
                         <a href="${problem.photoURL}">
                             <img alt="photo" src="${problem.photoURL}" style="width: 100%;">

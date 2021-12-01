@@ -22,6 +22,11 @@ export async function emailService(id: string){
 }
 
 async function sendEmail(organization: any, problem: any, user: any){
+    const destinationEmail = organization.email
+    if(destinationEmail == "none"){
+        return
+    }
+
     const transporter = nodemailer.createTransport({
         host: process.env.emailHOST as string,
         port: parseInt(process.env.emailPORT as string),
@@ -33,7 +38,7 @@ async function sendEmail(organization: any, problem: any, user: any){
 
     const mailOptions = {
         from: process.env.emailUSER as string,
-        to: organization.email,
+        to: destinationEmail,
         subject: 'New problem in the city',
         html: renderHTML(problem, user, organization.name)
     }

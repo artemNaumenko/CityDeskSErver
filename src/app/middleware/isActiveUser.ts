@@ -12,9 +12,9 @@ export async function isActiveUser(req: Request, res: Response, next: Function) 
             if(status.value != "BANNED") {
                 return next()
             }
-            return res.status(400).json({massage: "You are banned"})
+            return res.status(402).json({massage: "You are banned"})
         }
-        return res.status(400).json({massage: "User is not find"})
+        return res.status(401).json({massage: "User is not find"})
     }catch (e){
         return res.status(400).json({massage: e})
     }

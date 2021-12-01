@@ -14,7 +14,7 @@ export async function isValidProblemData(req: Request, res: Response, next: Func
                 (typeof longitude == "number") && (typeof latitude == "number")){
             return next()
         } else {
-            return res.status(401).json()
+            return res.status(403).json()
         }
     }catch (e){
         return res.status(400).json({massage: e})

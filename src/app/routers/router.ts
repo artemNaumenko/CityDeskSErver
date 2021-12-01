@@ -10,6 +10,7 @@ import {testController} from "../controllers/testController";
 import {isValidUserIdInParams} from "../middleware/isValidUserIdInParams";
 import {isValidProblemData} from "../middleware/isValidProblemData";
 import {isValidSignInData} from "../middleware/isValidSignInData";
+import {getOrganizationController} from "../controllers/organizationController";
 
 
 // Export module for registering router in express app
@@ -26,3 +27,5 @@ router.delete("/deleteProblem", deleteProblemController)
 router.post("/signIn", isValidSignInData, signInController)
 router.delete("/deleteUser", deleteUserController)
 router.get("/getUser/:userId", isValidUserIdInParams, getUserController)
+
+router.get("/getOrganizations", getOrganizationController)

@@ -7,6 +7,7 @@ const problemSchema = new Schema({
         photoURL: {type: String, required: true},
         longitude: {type: Number, required: true},
         latitude: {type: Number, required: true},
+        responsibleOrganizations: [{type: mongoose.Schema.Types.ObjectId, ref: "organization"}],
         statusID: {type: mongoose.Schema.Types.ObjectId, ref: "problemStatus"}
     }, {
         timestamps: true

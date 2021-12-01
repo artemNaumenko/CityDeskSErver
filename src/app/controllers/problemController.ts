@@ -3,7 +3,7 @@ import {addingProblem} from "../services/addingProblem";
 import {getAllUnsolvedProblems} from "../services/getAllUnsolvedProblems";
 import {getAllSolvedProblems} from "../services/getAllSolvedProblems";
 import {deleteProblem} from "../services/deleteProblem";
-import {emailService} from "../services/emailServices";
+import {emailService} from "../services/emailReportServices";
 import {getProblemById} from "../services/getProblemById";
 
 export async function addingProblemController(req: Request, res: Response): Promise<Response>{

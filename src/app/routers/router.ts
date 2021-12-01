@@ -10,8 +10,9 @@ import {testController} from "../controllers/testController";
 import {isValidUserIdInParams} from "../middleware/isValidUserIdInParams";
 import {isValidProblemData} from "../middleware/isValidProblemData";
 import {isValidSignInData} from "../middleware/isValidSignInData";
-import {getOrganizationController} from "../controllers/organizationController";
+import {getOrganizationByIdController, getOrganizationController} from "../controllers/organizationController";
 import {isValidProblemIdInParams} from "../middleware/isValidProblemIdInParams";
+import {isValidOrganizationIdInParams} from "../middleware/isValidOrganizationIdInParams";
 
 
 // Export module for registering router in express app
@@ -31,3 +32,4 @@ router.delete("/deleteUser", deleteUserController)
 router.get("/getUser/:userId", isValidUserIdInParams, getUserController)
 
 router.get("/getOrganizations", getOrganizationController)
+router.get("/getOrganization/:organizationId", isValidOrganizationIdInParams, getOrganizationByIdController)

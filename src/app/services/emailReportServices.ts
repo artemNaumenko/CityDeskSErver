@@ -65,7 +65,7 @@ function renderHTML(problem: any, user: any, organizationName: string){
                 <h2>Hi ${organizationName},</h2>
                 <p>user of CityDesk ${userName} (${user.email}), reported a new problem in the city:</p>
                 <br/>
-                <div style="background-color: white; border-radius: 10px; padding: 5%; width: 50%; margin: auto">
+                <div style="background-color: white; border-radius: 10px; padding: 5%; width: 70%; margin: auto">
                     <h3>${problem.title}</h3>
                     <a href="https://www.google.com/maps/place/3416+12,+044+10+Ge%C4%8Da/@${problem.latitude},${problem.longitude},18z/data=!4m5!3m4!1s0x473f21237c6536ef:0x874b1a26ed762ddd!8m2!3d${problem.latitude}!4d${problem.longitude}">
                         <div style="overflow: hidden">

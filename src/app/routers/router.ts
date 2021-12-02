@@ -15,25 +15,26 @@ import {isValidProblemIdInParams} from "../middleware/isValidProblemIdInParams";
 import {isValidOrganizationIdInParams} from "../middleware/isValidOrganizationIdInParams";
 import {isValidSolvedFilterInParams} from "../middleware/isValidSolvedFilterInParams";
 import {isValidOrganizationFilterInParams} from "../middleware/isValidOrganizationFilterInParams";
+import {isValidApiKey} from "../middleware/isValidApiKey";
 
 
 // Export module for registering router in express app
 export const router: Router = Router();
 
 // Define your routes here
-router.get("/", testController)
+router.get("/", isValidApiKey, testController)
 
-router.post("/addProblem",isActiveUser, isValidProblemData, addingProblemController)
+router.post("/addProblem", isValidApiKey, isActiveUser, isValidProblemData, addingProblemController)
 router.get("/getProblems/solvedFilter=:SOLVED/organizationFilter=:ORGANIZATION",
-            isValidSolvedFilterInParams, isValidOrganizationFilterInParams, getProblemsController)
-router.get("/getAllUnsolvedProblems", getAllUnsolvedProblemsController)
-router.get("/getAllSolvedProblems", getAllSolvedProblemsController)
-router.get("/getProblem/:problemId", isValidProblemIdInParams,getProblemByIdController)
-router.delete("/deleteProblem", deleteProblemController)
+                isValidApiKey, isValidSolvedFilterInParams, isValidOrganizationFilterInParams, getProblemsController)
+router.get("/getAllUnsolvedProblems", isValidApiKey, getAllUnsolvedProblemsController)
+router.get("/getAllSolvedProblems", isValidApiKey ,getAllSolvedProblemsController)
+router.get("/getProblem/:problemId", isValidApiKey, isValidProblemIdInParams,getProblemByIdController)
+router.delete("/deleteProblem", isValidApiKey, deleteProblemController)
 
-router.post("/signIn", isValidSignInData, signInController)
-router.delete("/deleteUser", deleteUserController)
-router.get("/getUser/:userId", isValidUserIdInParams, getUserController)
+router.post("/signIn", isValidApiKey,isValidSignInData, signInController)
+router.delete("/deleteUser", isValidApiKey, deleteUserController)
+router.get("/getUser/:userId", isValidApiKey, isValidUserIdInParams, getUserController)
 
-router.get("/getOrganizations", getOrganizationController)
-router.get("/getOrganization/:organizationId", isValidOrganizationIdInParams, getOrganizationByIdController)
+router.get("/getOrganizations", isValidApiKey,getOrganizationController)
+router.get("/getOrganization/:organizationId", isValidApiKey,isValidOrganizationIdInParams, getOrganizationByIdController)

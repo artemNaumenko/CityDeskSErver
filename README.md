@@ -8,17 +8,31 @@
 #post "/addProblem"
     request for add new city problem into database, request body contains title, context, 
     authorId (not google id, but id from our database), longitude, latitude parameters 
-    photoURL (The register has marking!!!). If good condition server return status 200.
+    photoURL and list responsibleOrganizations (The register has marking!!!). 
+    If good condition server return status 200. Server return status 401
+    if user is not find, 402 is user is banned, 403 if data in body requse is
+    incorrect.
 
 #get "/getAllUnsolvedProblems"
     request for list that contains all UNSOLVED problems in database. 
-    If good conditions server return status 200 .
-    and json object. 
+    If good conditions server return status 200
+    and json list. 
 
 #get "/getAllSolvedProblems"
     request for list that contains all SOLVED problems in database. 
-    If good conditions server return status 200.
-    and json object.
+    If good conditions server return status 200
+    and json list.
+
+#get "/getProblems/solvedFilter=:SOLVED/organizationFilter=:ORGANIZATION"
+    request for list filtered problems. Parameter :SOLVED may be
+    true || false || none, paramrter :ORGANIZATION may be 
+    organizationId || none. If good conditions server return status 200
+    and json list.
+
+#get "/getProblem/:problemId"
+    requst for getting problem from database bt specific id. If good 
+    conditions server return status 200 and problem object. If problemId is 
+    invaild server return status 401.
 
 #delete "/deleteProblem"
     request for deleting problem (actualy object does not delete from database)
@@ -41,31 +55,11 @@
     If good conditions server return status 200 and user object. If userId is invaild 
     server return status 401.
 
-#databaseCollections
-#userStatus
-    _id
-    value: {"ACTIVE" || "BANNED"}
+#get "/getOrganizations"
+    request for getting list that contains all organizations from database.
+    if good conditions server return status 200 and json list.
 
-#user
-    _id
-    googleId
-    name
-    email
-    photoURL
-    statusID: references on _id of object from collection userStatus
-
-#problemStatus
-    _id
-    value: {"UNSOLVED" || "SOLVED"}
-
-#problem
-    _id
-    title 
-    context
-    authorID: references on _id of object from collection user
-    photoURL
-    longitude
-    latitude
-    statusID: references on _id of object from collection problemStatus
-    createdAt: timestamp
-    updatedAt: timestamps
+#get "/getOrganization/:organizationId"
+    requst for getting organization from database bt specific id. If good 
+    conditions server return status 200 and organization object. If organizationId is 
+    invaild server return status 401.

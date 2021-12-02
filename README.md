@@ -1,5 +1,9 @@
 # CityDeskServer
 
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
+    EVERY request MUST contains in headers API access key
+
+
 #methods:
 #get "/" 
     test requset, if good conditions server return status 200 

@@ -54,6 +54,7 @@ async function sendEmail(organization: any, problem: any, user: any){
 
 function renderHTML(problem: any, user: any, organizationName: string){
     let userName
+
     if(user.name){
         userName = user.name
     } else {

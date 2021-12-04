@@ -42,9 +42,6 @@ export async function getProblemsController(req: Request, res: Response){
     try{
         const solvedFilter = req.params.SOLVED
         const organizationFilter = req.params.ORGANIZATION
-
-        await problemModel.deleteOne({_id: "61a8986b111a3022ed7425d8"})
-
         const problems = await getProblems(solvedFilter, organizationFilter)
         return res.status(200).json(problems)
     } catch (e) {
